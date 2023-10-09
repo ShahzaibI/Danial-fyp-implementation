@@ -1,0 +1,115 @@
+body .container
+{
+    max-width: 630px;
+    min-width: 630px;
+}
+.blue
+{
+    color: rgb(26, 64, 154);
+}
+.gray
+{
+    color: rgb(87, 109, 123);
+}
+.light-yellow
+{
+    color: rgb(188, 169, 126);
+}
+.light-blue
+{
+    color: rgb(1, 135, 222);
+}
+.light-green
+{
+    color: rgb(57, 195, 177);
+}
+.red
+{
+    color: rgb(208, 2, 27);
+}
+.light-red
+{
+    color: rgb(254, 122, 102);
+}
+.yellow
+{
+    color: rgb(233, 165, 7);
+}
+.style
+{
+    font-family: "Century Gothic", Helvetica, sans-serif;
+}
+.font-11
+{
+    font-size: 11px;
+}
+.font-14
+{
+    font-size: 14px;
+}
+
+.ms-60
+{
+    margin-left: 100px;
+}
+.h-full
+{
+    min-height: 800px;
+}
+
+.bg-blue
+{
+    background-color: rgb(26, 64, 154);
+    color: white;
+}
+.bg-gray
+{
+    background-color: rgb(87, 109, 123);
+    color: white;
+}
+.bg-light-yellow
+{
+    background-color: rgb(188, 169, 126);
+    color: white;
+}
+.bg-light-blue
+{
+    background-color: rgb(1, 135, 222);
+    color: white;
+}
+.bg-light-green
+{
+    background-color: rgb(57, 195, 177);
+    color: white;
+}
+.bg-red
+{
+    background-color: rgb(208, 2, 27);
+    color: white;
+}
+.bg-light-red
+{
+    background-color: rgb(254, 122, 102);
+    color: white;
+}
+.bg-yellow
+{
+    background-color: rgb(233, 165, 7);
+    color: white;
+}
+.w-200
+{
+    width: 200px;
+}
+.transparent
+{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.w-60px
+{
+    width: 60px !important;
+}
+.w-345px
+{
+    width: 345px !important;
+}
