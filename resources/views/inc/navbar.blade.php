@@ -38,8 +38,6 @@
         @endauth
 
         @guest
-        <!-- <li><a href ="#" class="btn">Create CV</a></li>
-        <li><a href ="#" class="btn">Create Cover letter</a></li> -->
         <li><a href="/login" class="btn primary-btn">Sign up or Log in</a></li>
         @endguest
       </ul>
