@@ -9,7 +9,9 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-        <li class="d-flex align-items-center nav-links px-3"><a href="#" class="text-dark">Make Team</a></li>
+        @role('author')
+            <li class="d-flex align-items-center nav-links px-3"><a href="#" class="text-dark">Make Team</a></li>
+        @endrole
         @auth
         <li class="nav-item dropdown dropdown-left">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
