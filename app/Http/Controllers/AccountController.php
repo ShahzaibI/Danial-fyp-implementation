@@ -117,6 +117,10 @@ class AccountController extends Controller
         return redirect()->back();
     }
 
+    public function forTeamUpSetupForm(){
+        return view('account.forTeamup-user-form');
+    }
+
     public function deactivateView()
     {
         return view('account.deactivate');

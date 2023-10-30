@@ -15,10 +15,10 @@
                             <div class="m-b-25"> <img src="{{asset('images/user-profile.png')}}" class="img-radius" alt="User-Profile-Image"> </div>
                             <h6 class="f-w-600">{{auth()->user()->name}}</h6>
                             @role('user')
-                            <p>User</p> 
+                            <p>User</p>
                             @endrole
                             @role('admin')
-                            <p>Author (Job Lister) <i class="fas fa-pen-square"></i></p> 
+                            <p>Author (Job Lister) <i class="fas fa-pen-square"></i></p>
                             @endrole
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                   <p class="m-b-10 f-w-600">Logout</p>
-                                    <a href="{{route('logout')}}" class="btn btn-outline-dark">Logout</a>
+                                    <a href="{{route('account.logout')}}" class="btn btn-outline-dark">Logout</a>
                                 </div>
                             </div>
                             <ul class="social-link list-unstyled m-t-40 m-b-10">
