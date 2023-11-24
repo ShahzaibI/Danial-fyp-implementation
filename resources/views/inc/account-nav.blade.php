@@ -46,7 +46,7 @@
     @role('user')
     <li class="list-group-item list-group-item-action {{ request()->segment(2) == 'teamup-set-profile' ? 'active': ''}}">
       <a href="{{route('account.forTeamUpSetupForm')}}" class="account-nav-link">
-        <i class="bi bi-person-lines-fill"></i> Teamup profile
+        <i class="bi bi-person-lines-fill"></i> Teamup Profile
       </a>
     </li>
     @endrole
