@@ -37,7 +37,7 @@
         <div class="line-divider"></div>
         <div class="mt-3">
           <button type="submit" class="btn primary-btn">Change Password</button>
-          <button class="btn primary-outline-btn">Cancel</button>
+          <a href="{{ route('account.index') }}" class="btn primary-outline-btn">Cancel</a>
         </div>
       </form>
     </div>

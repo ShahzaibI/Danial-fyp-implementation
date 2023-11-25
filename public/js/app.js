@@ -57196,3 +57196,52 @@ function registrationValidation()
 //         }
 //     }
 // }
+
+
+// TeamUp Form
+$(document).ready(function(){
+    $.validator.addMethod('no_special_characters', function(value, element) {
+        return /^[A-Za-z\s]+$/.test(value);
+    }, 'Special characters or Numbers are not allowed');
+  $('#storeProfileData').validate({
+    rules:{
+        first_name:{
+            required: true,
+            minlength: 2,
+            maxlength: 20,
+            no_special_characters: true,
+        },
+        last_name:{
+            required: true,
+            minlength: 2,
+            maxlength: 20,
+            no_special_characters: true,
+        },
+        address:{
+            required: true,
+        },
+        city:{
+            required: true,
+        },
+        profile_image:{
+            required: true,
+        },
+        phone:{
+            required: true,
+            minlength: 11,
+            maxlength:11,
+        },
+        email_address: {
+            required: true,
+            email: true,
+        }
+    },
+    messages: {
+
+    },
+
+    submitHandler:function(form){
+        form.submit()
+    },
+  });
+});

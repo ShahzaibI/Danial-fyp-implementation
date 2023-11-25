@@ -121,6 +121,10 @@ class AccountController extends Controller
         return view('account.forTeamup-user-form');
     }
 
+    public function storeProfileData(Request $request){
+        dd($request->all());
+    }
+
     public function deactivateView()
     {
         return view('account.deactivate');

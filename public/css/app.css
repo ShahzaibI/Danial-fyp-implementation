@@ -12200,3 +12200,8 @@ button {
     background-color: red;
     color: white;
 } */
+
+.error{
+    color: red;
+    font-size: 14px;
+}
