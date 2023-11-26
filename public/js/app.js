@@ -57204,6 +57204,7 @@ $(document).ready(function(){
         return /^[A-Za-z\s]+$/.test(value);
     }, 'Special characters or Numbers are not allowed');
   $('#storeProfileData').validate({
+    ignore: [],
     rules:{
         first_name:{
             required: true,
@@ -57234,14 +57235,91 @@ $(document).ready(function(){
         email_address: {
             required: true,
             email: true,
-        }
+        },
+        "school_name[]":{
+            required: true,
+        },
+        "school_location[]":{
+            required: true,
+        },
+        "degree[]":{
+            required: true,
+        },
+        "study[]":{
+            required: true,
+        },
     },
     messages: {
 
     },
-
+    errorClass: "invalid",
+    errorElement: "small",
     submitHandler:function(form){
         form.submit()
     },
   });
+});
+
+$(document).ready(function(){
+    $('#add_new_degree').on('click',function(){
+        console.log('ok');
+        const degree = $(`
+            <div class="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="school" class="control-label">School Name</label>
+                            <div role="combobox" class="autosuggest-container">
+                                <input type="text" class="form-control autosuggest" placeholder="(i.e). University Of Lahore" name="school_name[]" id="school" maxlength="50" spellcheck="true" value="" oninput="scName()">
+                                <div id="scName-error" class="text-danger"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="SCLO" class="control-label">School Location</label>
+                            <div role="combobox" class="autosuggest-container">
+                                <input type="text" class="form-control autosuggest" placeholder="(i.e). Lahore city, Pakistan" name="school_location[]" id="SCLO" maxlength="50" autosuggesttype="googleplaces" spellcheck="true" value="" oninput="scLocation()">
+                                <div id="scLocation-error" class="text-danger"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label">Education type</label>
+                            <select name="degree[]" class="form-select" id="degree" onclick="eduType()">
+                                <option selected hidden disabled>Not Selected</option>
+                                <option value="Degree">Degree</option>
+                                <option value="Diploma">Diploma</option>
+                                <option value="Certification">Certification</option>
+                            </select>
+                            <div id="degree-error" class="text-danger"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="STUY" class="control-label">Education</label>
+                            <div role="combobox" class="autosuggest-container">
+                                <input type="text" class="form-control autosuggest" placeholder="(i.e). Bachelor of science in Computer Science" name="study[]" id="STUY" maxlength="50" autosuggesttype="fieldofstudy" spellcheck="true" value="" oninput="education()">
+                                <div id="education-error" class="text-danger"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom py-2 mb-2 text-primary">
+                    <div class="col-sm-12 text-center">
+                        <p class="delete_degree"><i class="fas fa-minus-circle icon-add pe-2" aria-hidden="true"></i>Remove this degree</p>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        $('.education-container').append(degree);
+
+        degree.find('.delete_degree').on('click', function(){
+            degree.remove();
+        });
+    });
 });

@@ -12201,7 +12201,20 @@ button {
     color: white;
 } */
 
-.error{
+.error, .invalid{
     color: red;
     font-size: 14px;
+}
+
+/* team up */
+
+
+.another-class {
+    cursor: pointer;
+}
+.another-class:hover {
+    text-decoration: underline;
+}
+.delete_degree{
+    cursor: pointer;
 }
