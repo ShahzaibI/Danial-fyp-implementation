@@ -23,9 +23,9 @@
               </thead>
               <tbody>
                 @if($applications && $applications->count())
-                  @foreach($applications as $application)
+                  @foreach($applications as $key => $application)
                   <tr>
-                    <td>1</td>
+                    <td>{{ $key+1 }}</td>
                     <td>{{$application->user->name}}</td>
                     <td><a href="mailto:{{$application->user->email}}">{{$application->user->email}}</a></td>
                     <td><a href="{{route('post.show',['job'=>$application->post->id])}}">{{substr($application->post->job_title,0,14)}}...</a></td>
