@@ -12215,6 +12215,6 @@ button {
 .another-class:hover {
     text-decoration: underline;
 }
-.delete_degree{
+.cursor-pointer{
     cursor: pointer;
 }

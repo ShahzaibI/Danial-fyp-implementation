@@ -6,8 +6,8 @@
         <div class="col-sm-12 col-md-6 px-0">
             <div class="login-container">
                 <div class="login-header mb-3">
-                    <h3> Cv Builder Login</h3>
-                    <p class="login-header-title">Welcome back to Cv Builder</p>
+                    <h3> TeamUp Login</h3>
+                    <p class="login-header-title">Welcome back to TeamUp</p>
                     <p class="text-muted">login with your registered email & password.</p>
                 </div>
                 <div class="login-form">
@@ -57,7 +57,7 @@
         <div class="col-sm-12 col-md-6 px-0">
             <div class="login-poster">
                 {{-- <img src="" alt=""> --}}
-                <h2 class="mb-1 slogon">Cv Builder</h2>
+                <h2 class="mb-1 slogon">TeamUp</h2>
                 <p class="text-white lead">Go confidently in the direction of your dreams. Live the life you have imagined.</p>
             </div>
         </div>
