@@ -100,6 +100,7 @@ Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('change-password', [AccountController::class, 'changePasswordView'])->name('account.changePassword');
     Route::get('teamup-set-profile', [AccountController::class, 'forTeamUpSetupForm'])->name('account.forTeamUpSetupForm');
     Route::post('teamup-set-profile', [AccountController::class, 'storeProfileData'])->name('account.storeProfileData');
+    Route::get('teamup-delete-profile/{id}', [AccountController::class, 'deleteProfileData'])->name('account.deleteProfileData');
     Route::delete('delete', [AccountController::class, 'deleteAccount'])->name('account.delete');
     Route::put('change-password', [AccountController::class, 'changePassword'])->name('account.changePassword');
     //savedJobs

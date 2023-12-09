@@ -57229,6 +57229,9 @@ $(document).ready(function(){
         profile_image:{
             required: true,
         },
+        resume:{
+            required: true,
+        },
         phone:{
             required: true,
             minlength: 11,
@@ -57251,6 +57254,7 @@ $(document).ready(function(){
         },
         "study[]":{
             required: true,
+            maxlength: 50,
         },
         "job_title[]":{
             required: true,
@@ -57276,6 +57280,18 @@ $(document).ready(function(){
             maxlength: 50,
         },
         "skill_rating[]":{
+            required: true,
+        },
+        job_category:{
+            required: true,
+        },
+        job_level:{
+            required: true,
+        },
+        education_type:{
+            required: true,
+        },
+        employment_type:{
             required: true,
         },
     },

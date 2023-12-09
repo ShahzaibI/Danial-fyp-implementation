@@ -59,7 +59,6 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\JobApplication');
     }
-    //For CV
     // To build relationship for many educations to user
     public function education()
     {
@@ -78,15 +77,6 @@ class User extends Authenticatable
     public function details()
     {
         return $this->hasOne(UserDetail::class);
-    }
-    //For cover letter
-    public function cldetails()
-    {
-        return $this->hasOne(cluser::class);
-    }
-    public function clrecipients()
-    {
-        return $this->hasOne(clreceiver::class);
     }
 
 }

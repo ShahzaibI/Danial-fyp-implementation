@@ -54,8 +54,8 @@ class JobApplicationController extends Controller
     public function downloadCV($id)
     {
         $application = JobApplication::find($id);
-        // $file = '/storage/applocationCV/'. $application->cv_file;
-        $file = "C:\\xampp\\htdocs\\fyp implementaion\\public\\storage\\applocationCV\\".$application->cv_file;
+        $file = public_path('storage\applocationCV\\'). $application->cv_file;
+        // $file = "C:\\xampp\\htdocs\\fyp implementaion\\public\\storage\\applocationCV\\".$application->cv_file;
         Alert::toast('Cv Download successfull', 'success');
         return response()->download($file, $application->cv_file);
     }
