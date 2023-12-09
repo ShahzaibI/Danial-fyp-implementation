@@ -57220,9 +57220,11 @@ $(document).ready(function(){
         },
         address:{
             required: true,
+            maxlength: 100,
         },
         city:{
             required: true,
+            maxlength: 20,
         },
         profile_image:{
             required: true,
@@ -57238,14 +57240,42 @@ $(document).ready(function(){
         },
         "school_name[]":{
             required: true,
+            maxlength: 50,
         },
         "school_location[]":{
             required: true,
+            maxlength: 50,
         },
         "degree[]":{
             required: true,
         },
         "study[]":{
+            required: true,
+        },
+        "job_title[]":{
+            required: true,
+            maxlength: 50,
+        },
+        "company_name[]":{
+            required: true,
+            maxlength: 50,
+        },
+        "job_city[]":{
+            required: true,
+            maxlength: 20,
+        },
+        "job_country[]":{
+            required: true,
+            maxlength: 20,
+        },
+        // "job_description[]":{
+        //     required: true,
+        // },
+        "skill_name[]":{
+            required: true,
+            maxlength: 50,
+        },
+        "skill_rating[]":{
             required: true,
         },
     },
@@ -57262,25 +57292,22 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $('#add_new_degree').on('click',function(){
-        console.log('ok');
         const degree = $(`
             <div class="">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="school" class="control-label">School Name</label>
+                            <label for="school" class="control-label">School Name <span style="color:red; font-weight:bold;">*</span></label>
                             <div role="combobox" class="autosuggest-container">
                                 <input type="text" class="form-control autosuggest" placeholder="(i.e). University Of Lahore" name="school_name[]" id="school" maxlength="50" spellcheck="true" value="" oninput="scName()">
-                                <div id="scName-error" class="text-danger"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="SCLO" class="control-label">School Location</label>
+                            <label for="SCLO" class="control-label">School Location <span style="color:red; font-weight:bold;">*</span></label>
                             <div role="combobox" class="autosuggest-container">
                                 <input type="text" class="form-control autosuggest" placeholder="(i.e). Lahore city, Pakistan" name="school_location[]" id="SCLO" maxlength="50" autosuggesttype="googleplaces" spellcheck="true" value="" oninput="scLocation()">
-                                <div id="scLocation-error" class="text-danger"></div>
                             </div>
                         </div>
                     </div>
@@ -57288,29 +57315,27 @@ $(document).ready(function(){
                 <div class="row ">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label class="control-label">Education type</label>
+                            <label class="control-label">Education type <span style="color:red; font-weight:bold;">*</span></label>
                             <select name="degree[]" class="form-select" id="degree" onclick="eduType()">
                                 <option selected hidden disabled>Not Selected</option>
                                 <option value="Degree">Degree</option>
                                 <option value="Diploma">Diploma</option>
                                 <option value="Certification">Certification</option>
                             </select>
-                            <div id="degree-error" class="text-danger"></div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="STUY" class="control-label">Education</label>
+                            <label for="STUY" class="control-label">Education <span style="color:red; font-weight:bold;">*</span></label>
                             <div role="combobox" class="autosuggest-container">
                                 <input type="text" class="form-control autosuggest" placeholder="(i.e). Bachelor of science in Computer Science" name="study[]" id="STUY" maxlength="50" autosuggesttype="fieldofstudy" spellcheck="true" value="" oninput="education()">
-                                <div id="education-error" class="text-danger"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row border-top border-bottom py-2 mb-2 text-primary">
                     <div class="col-sm-12 text-center">
-                        <p class="delete_degree"><i class="fas fa-minus-circle icon-add pe-2" aria-hidden="true"></i>Remove this degree</p>
+                        <p class="delete_degree cursor-pointer"><i class="fas fa-minus-circle icon-add pe-2" aria-hidden="true"></i>Remove this degree</p>
                     </div>
                 </div>
             </div>
@@ -57320,6 +57345,100 @@ $(document).ready(function(){
 
         degree.find('.delete_degree').on('click', function(){
             degree.remove();
+        });
+    });
+
+    $('#add_new_experience').on('click',function(){
+        const experience = $(`
+            <div class="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="position" class="control-label">Job Title <span style="color:red; font-weight:bold;">*</span></label>
+                            <input type="text" name="job_title[]" class="form-control" placeholder="(i.e). Software Engineer" id="position" maxlength="50" spellcheck="true" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="company">Company Name <span style="color:red; font-weight:bold;">*</span></label>
+                            <input type="text" name="company_name[]" placeholder="(i.e). Macro Mobile Solutions" maxlength="100" class="form-control" id="company" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-city col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label " for="jobcity">City <span style="color:red; font-weight:bold;">*</span></label>
+                            <input type="text" name="job_city[]" placeholder="(i.e). Lahore" maxlength="100" class="form-control" id="jobcity" autocomplete="address-level2" value="">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="jobcountry">Country <span style="color:red; font-weight:bold;">*</span></label>
+                            <input type="text" name="job_country[]" placeholder="(i.e). Pakistan" maxlength="50" class="form-control" id="jobcountry" value="">
+                        </div>
+                    </div>
+                </div>
+                <label class="control-label" for="jobdescription">Description</label><br/>
+                <div class="input-group">
+                    <textarea class="form-control mb-3" name="job_description[]" aria-label="With textarea" id="jobdescription" rows="5"></textarea>
+                </div>
+                <div class="row border-top border-bottom py-2 mb-2 text-primary">
+                    <div class="col-sm-12 text-center">
+                        <p class="delete_experience cursor-pointer"><i class="fas fa-minus-circle icon-add pe-2" aria-hidden="true"></i>Remove this experience</p>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        $('.experience-container').append(experience);
+
+        experience.find('.delete_experience').on('click', function(){
+            experience.remove();
+        });
+    });
+
+    $('#add_new_skill').on('click',function(){
+        const skill = $(`
+            <div class="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="skillname" class="control-label">Skill Name <span style="color:red; font-weight:bold;">*</span></label>
+                            <input type="text" name="skill_name[]" class="form-control" placeholder="(i.e). Android developer" id="skillname" maxlength="50" spellcheck="true" value="">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="skillrating" class="control-label">Rating <span style="color:red; font-weight:bold;">*</span></label>
+                            <select id="rating" name="skill_rating[]" class="form-select">
+                                <option disabled selected hidden value="">out of 10</option>
+                                <option value="10/10">10/10</option>
+                                <option value="09/10">09/10</option>
+                                <option value="08/10">08/10</option>
+                                <option value="07/10">07/10</option>
+                                <option value="06/10">06/10</option>
+                                <option value="05/10">05/10</option>
+                                <option value="04/10">04/10</option>
+                                <option value="03/10">03/10</option>
+                                <option value="02/10">02/10</option>
+                                <option value="01/10">01/10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row border-top border-bottom py-2 mb-2 text-primary">
+                    <div class="col-sm-12 text-center">
+                        <p class="delete_skill cursor-pointer"><i class="fas fa-minus-circle icon-add pe-2" aria-hidden="true"></i>Remove this skill</p>
+                    </div>
+                </div>
+            </div>
+        `);
+
+        $('.skills-container').append(skill);
+
+        skill.find('.delete_skill').on('click', function(){
+            skill.remove();
         });
     });
 });

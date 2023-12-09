@@ -21,8 +21,8 @@
         <div class="col-sm-12 col-md-6 px-0">
             <div class="login-container">
                 <div class="login-header mb-3">
-                    <h3>Create your free Cv builder account</h3>
-                    <p class="text-muted">Register with basic information, Complete your profile and start applying for the job and make professional Resume for free!</p>
+                    <h3>Create your free TeamUp account</h3>
+                    <p class="text-muted">Register with basic information, Complete your profile and start applying for the job!</p>
                 </div>
                 <div class="login-form">
                     <form action="{{route('register')}}" method="POST" onsubmit="return registrationValidation()">
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                         <div>
-                            <small class="text-muted d-block mb-3">By clicking on 'Create Cv builder Account' below you are agreeing to the terms and conditions of Cv Builder!</p>
+                            <small class="text-muted d-block mb-3">By clicking on 'Register' below you are agreeing to the terms and conditions of TeamUp!</p>
                         </div>
                         <button type="submit" class="btn primary-btn btn-block">Register</button>
                     </form>
