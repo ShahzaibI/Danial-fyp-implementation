@@ -128,7 +128,6 @@ class AccountController extends Controller
             $educations = auth()->user()->education;
             $experiences = auth()->user()->experiences;
             $skills = auth()->user()->skills;
-            // dd($user_detail, $education, $experience, $skill);
             return view('account.teamUp-profile', compact('user_detail', 'experiences', 'educations', 'skills'));
         }
         else{
@@ -221,6 +220,20 @@ class AccountController extends Controller
             DB::rollBack();
             return response()->json(['Message' => 'Unable to store data'.  $th]);
         }
+    }
+
+    public function editProfile(){
+        $user_detail = auth()->user()->details;
+        $educations = auth()->user()->education;
+        $experiences = auth()->user()->experiences;
+        $skills = auth()->user()->skills;
+        $job_categories = CompanyCategory::all();
+        // dd($user_detail, $experiences, $skills, $educations);
+        return view('account.teamUp-profile-edit', compact('user_detail', 'experiences', 'educations', 'skills', 'job_categories'));
+    }
+
+    public function updateProfileData(Request $request){
+        dd($request->all());
     }
 
     public function deactivateView()

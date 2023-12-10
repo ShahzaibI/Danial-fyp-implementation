@@ -57203,107 +57203,117 @@ $(document).ready(function(){
     $.validator.addMethod('no_special_characters', function(value, element) {
         return /^[A-Za-z\s]+$/.test(value);
     }, 'Special characters or Numbers are not allowed');
-  $('#storeProfileData').validate({
-    ignore: [],
-    rules:{
-        first_name:{
-            required: true,
-            minlength: 2,
-            maxlength: 20,
-            no_special_characters: true,
+    $('#storeProfileData').validate({
+        ignore: [],
+        rules:{
+            first_name:{
+                required: true,
+                minlength: 2,
+                maxlength: 20,
+                no_special_characters: true,
+            },
+            last_name:{
+                required: true,
+                minlength: 2,
+                maxlength: 20,
+                no_special_characters: true,
+            },
+            address:{
+                required: true,
+                maxlength: 100,
+            },
+            city:{
+                required: true,
+                maxlength: 20,
+            },
+            profile_image:{
+                required: function(element){
+                    if(typeof edit_page === 'undefined'){
+                        return true;
+                    }
+                    return false;
+                },
+            },
+            resume:{
+                required: function(element){
+                    if(typeof edit_page === 'undefined'){
+                        return true;
+                    }
+                    return false;
+                },
+            },
+            phone:{
+                required: true,
+                minlength: 11,
+                maxlength:11,
+            },
+            email_address: {
+                required: true,
+                email: true,
+            },
+            "school_name[]":{
+                required: true,
+                maxlength: 50,
+            },
+            "school_location[]":{
+                required: true,
+                maxlength: 50,
+            },
+            "degree[]":{
+                required: true,
+            },
+            "study[]":{
+                required: true,
+                maxlength: 50,
+            },
+            "job_title[]":{
+                required: true,
+                maxlength: 50,
+            },
+            "company_name[]":{
+                required: true,
+                maxlength: 50,
+            },
+            "job_city[]":{
+                required: true,
+                maxlength: 20,
+            },
+            "job_country[]":{
+                required: true,
+                maxlength: 20,
+            },
+            // "job_description[]":{
+            //     required: true,
+            // },
+            "skill_name[]":{
+                required: true,
+                maxlength: 50,
+            },
+            "skill_rating[]":{
+                required: true,
+            },
+            job_category:{
+                required: true,
+            },
+            job_level:{
+                required: true,
+            },
+            education_type:{
+                required: true,
+            },
+            employment_type:{
+                required: true,
+            },
         },
-        last_name:{
-            required: true,
-            minlength: 2,
-            maxlength: 20,
-            no_special_characters: true,
-        },
-        address:{
-            required: true,
-            maxlength: 100,
-        },
-        city:{
-            required: true,
-            maxlength: 20,
-        },
-        profile_image:{
-            required: true,
-        },
-        resume:{
-            required: true,
-        },
-        phone:{
-            required: true,
-            minlength: 11,
-            maxlength:11,
-        },
-        email_address: {
-            required: true,
-            email: true,
-        },
-        "school_name[]":{
-            required: true,
-            maxlength: 50,
-        },
-        "school_location[]":{
-            required: true,
-            maxlength: 50,
-        },
-        "degree[]":{
-            required: true,
-        },
-        "study[]":{
-            required: true,
-            maxlength: 50,
-        },
-        "job_title[]":{
-            required: true,
-            maxlength: 50,
-        },
-        "company_name[]":{
-            required: true,
-            maxlength: 50,
-        },
-        "job_city[]":{
-            required: true,
-            maxlength: 20,
-        },
-        "job_country[]":{
-            required: true,
-            maxlength: 20,
-        },
-        // "job_description[]":{
-        //     required: true,
-        // },
-        "skill_name[]":{
-            required: true,
-            maxlength: 50,
-        },
-        "skill_rating[]":{
-            required: true,
-        },
-        job_category:{
-            required: true,
-        },
-        job_level:{
-            required: true,
-        },
-        education_type:{
-            required: true,
-        },
-        employment_type:{
-            required: true,
-        },
-    },
-    messages: {
+        messages: {
 
-    },
-    errorClass: "invalid",
-    errorElement: "small",
-    submitHandler:function(form){
-        form.submit()
-    },
-  });
+        },
+        errorClass: "invalid",
+        errorElement: "small",
+        submitHandler:function(form){
+            form.submit()
+        },
+    });
 });
 
 $(document).ready(function(){
@@ -57315,7 +57325,7 @@ $(document).ready(function(){
                         <div class="form-group">
                             <label for="school" class="control-label">School Name <span style="color:red; font-weight:bold;">*</span></label>
                             <div role="combobox" class="autosuggest-container">
-                                <input type="text" class="form-control autosuggest" placeholder="(i.e). University Of Lahore" name="school_name[]" id="school" maxlength="50" spellcheck="true" value="" oninput="scName()">
+                                <input type="text" class="form-control autosuggest" placeholder="(i.e). University Of Lahore" name="school_name[]" id="school" maxlength="50" spellcheck="true" value="">
                             </div>
                         </div>
                     </div>
@@ -57323,7 +57333,7 @@ $(document).ready(function(){
                         <div class="form-group">
                             <label for="SCLO" class="control-label">School Location <span style="color:red; font-weight:bold;">*</span></label>
                             <div role="combobox" class="autosuggest-container">
-                                <input type="text" class="form-control autosuggest" placeholder="(i.e). Lahore city, Pakistan" name="school_location[]" id="SCLO" maxlength="50" autosuggesttype="googleplaces" spellcheck="true" value="" oninput="scLocation()">
+                                <input type="text" class="form-control autosuggest" placeholder="(i.e). Lahore city, Pakistan" name="school_location[]" id="SCLO" maxlength="50" autosuggesttype="googleplaces" spellcheck="true" value="">
                             </div>
                         </div>
                     </div>
@@ -57332,7 +57342,7 @@ $(document).ready(function(){
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label class="control-label">Education type <span style="color:red; font-weight:bold;">*</span></label>
-                            <select name="degree[]" class="form-select" id="degree" onclick="eduType()">
+                            <select name="degree[]" class="form-select" id="degree">
                                 <option selected hidden disabled>Not Selected</option>
                                 <option value="Degree">Degree</option>
                                 <option value="Diploma">Diploma</option>
@@ -57344,7 +57354,7 @@ $(document).ready(function(){
                         <div class="form-group">
                             <label for="STUY" class="control-label">Education <span style="color:red; font-weight:bold;">*</span></label>
                             <div role="combobox" class="autosuggest-container">
-                                <input type="text" class="form-control autosuggest" placeholder="(i.e). Bachelor of science in Computer Science" name="study[]" id="STUY" maxlength="50" autosuggesttype="fieldofstudy" spellcheck="true" value="" oninput="education()">
+                                <input type="text" class="form-control autosuggest" placeholder="(i.e). Bachelor of science in Computer Science" name="study[]" id="STUY" maxlength="50" autosuggesttype="fieldofstudy" spellcheck="true" value="">
                             </div>
                         </div>
                     </div>
@@ -57456,5 +57466,19 @@ $(document).ready(function(){
         skill.find('.delete_skill').on('click', function(){
             skill.remove();
         });
+    });
+
+    // User profile edit
+    $(document).on('click','#delete_old_education',function(){
+        var dataIdEducation = $(this).data('id');
+        $('.old_education'+dataIdEducation).remove();
+    });
+    $(document).on('click','#delete_old_experience',function(){
+        var dataIdExperience = $(this).data('id');
+        $('.old_experience'+dataIdExperience).remove();
+    });
+    $(document).on('click','#delete_old_skill',function(){
+        var dataIdSkill = $(this).data('id');
+        $('.old_skill'+dataIdSkill).remove();
     });
 });
