@@ -101,6 +101,8 @@ Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('teamup-set-profile', [AccountController::class, 'forTeamUpSetupForm'])->name('account.forTeamUpSetupForm');
     Route::post('teamup-set-profile', [AccountController::class, 'storeProfileData'])->name('account.storeProfileData');
     Route::get('teamup-delete-profile/{id}', [AccountController::class, 'deleteProfileData'])->name('account.deleteProfileData');
+    Route::get('edit-profile', [AccountController::class, 'editProfile'])->name('account.editProfile');
+    Route::post('teamup-update-profile', [AccountController::class, 'updateProfileData'])->name('account.updateProfileData');
     Route::delete('delete', [AccountController::class, 'deleteAccount'])->name('account.delete');
     Route::put('change-password', [AccountController::class, 'changePassword'])->name('account.changePassword');
     //savedJobs

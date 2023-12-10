@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="#" class="btn primary-btn" title="click to send email">Edit</a>
+                    <a href="{{ route('account.editProfile') }}" class="btn primary-btn" title="click to send email">Edit</a>
                     <a href="{{ route('account.deleteProfileData', auth()->user()->id) }}" class="btn danger-btn" title="click to send email">Delete</a>
                 </div>
             </div>
