@@ -233,7 +233,82 @@ class AccountController extends Controller
     }
 
     public function updateProfileData(Request $request){
-        dd($request->all());
+
+        try {
+            $user_detail = UserDetail::where('user_id', auth()->user()->id)->first();
+            Education::where('user_id', auth()->user()->id)->delete();
+            Experience::where('user_id', auth()->user()->id)->delete();
+            Skill::where('user_id', auth()->user()->id)->delete();
+            DB::beginTransaction();
+            if(isset($request->profile_image))
+            {
+                $photo_name = $request->file('profile_image')->getClientOriginalName();
+                $photo_path = $request->file('profile_image')->storeAs('public/images', $photo_name);
+            }
+            else{
+                $photo_name = $user_detail['picture'];
+            }
+            if(isset($request->resume))
+            {
+                $resume_name = $request->file('resume')->getClientOriginalName();
+                $resume_path = $request->file('resume')->storeAs('public/resume', $resume_name);
+            }
+            else{
+                $resume_name = $user_detail['resume'];
+            }
+            $user_detail->update([
+                'user_id' => auth()->user()->id,
+                'firstname' => $request->input('first_name'),
+                'surname' => $request->input('last_name'),
+                'address' => $request->input('address'),
+                'city' => $request->input('city'),
+                'picture' => $photo_name,
+                'resume' => $resume_name,
+                'phone' => $request->input('phone'),
+                'email' => $request->input('email_address'),
+                'summary' => $request->input('SUMMARY'),
+                'company_category_id' => $request->input('job_category'),
+                'job_level' => $request->input('job_level'),
+                'education' => $request->input('education_type'),
+                'employment_type' => $request->input('employment_type'),
+            ]);
+
+            for($i = 0; $i < count($request->input('school_name')); $i++){
+                $education = Education::create([
+                    'user_id' => auth()->user()->id,
+                    'school_name' => $request->input('school_name')[$i],
+                    'school_location' => $request->input('school_location')[$i],
+                    'degree' => $request->input('degree')[$i],
+                    'field_of_study' => $request->input('study')[$i],
+                ]);
+            }
+
+            for($i = 0; $i < count($request->input('job_title')); $i++){
+                $experience = Experience::create([
+                    'user_id' => auth()->user()->id,
+                    'job_title' => $request->input('job_title')[$i],
+                    'company_name' => $request->input('company_name')[$i],
+                    'city' => $request->input('job_city')[$i],
+                    'country' => $request->input('job_country')[$i],
+                    'description' => $request->input('job_description')[$i],
+                ]);
+            }
+
+            for($i = 0; $i < count($request->input('skill_name')); $i++){
+                $skill = Skill::create([
+                    'user_id' => auth()->user()->id,
+                    'skill_name' => $request->input('skill_name')[$i],
+                    'skill_rating' => $request->input('skill_rating')[$i],
+                ]);
+            }
+            DB::commit();
+            Alert::toast('Profile Updated Successfully!', 'success');
+            return redirect()->route('account.forTeamUpSetupForm');
+        }
+        catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json(['Message' => 'Unable to store data'.  $th]);
+        }
     }
 
     public function deactivateView()
